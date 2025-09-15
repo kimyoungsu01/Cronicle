@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  public PlayerController controller;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake() 
     {
-        
+        CharacterManager.instance._player = this;
+        Debug.Log(this);
+        controller = GetComponent<PlayerController>();
     }
 }

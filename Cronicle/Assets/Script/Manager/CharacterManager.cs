@@ -20,5 +20,5 @@ public class CharacterManager : MonoBehaviour
     }
 
     public PlayerController playerController { get; private set; }
-    public Player Player { get; private set; }
+    public Player _player { get; set; }
 }
