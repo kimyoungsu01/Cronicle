@@ -52,12 +52,6 @@ public class PlayerController : MonoBehaviour
             velocity.z = 0f;
             _rigidbody.velocity = velocity;
         }
-        //Debug.DrawRay(transform.position + (transform.forward * 0.2f) + (transform.up * 0.3f), Vector3.down * 0.5f, Color.red, 0.1f);
-        //Vector3 dir = transform.forward * moveInput.y + transform.right * moveInput.x;
-        //dir *= moveSpeed;
-        //dir.y = _rigidbody.velocity.y;
-        //_rigidbody.velocity = dir;
-        //Debug.Log(dir);
     }
 
     //public void OnCollisionEnter(Collision collision)
@@ -106,8 +100,8 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < rays.Length; i++)
         {
-            Debug.DrawRay(rays[i].origin, rays[i].direction * 0.4f, Color.red);
-            if (Physics.Raycast(rays[i], 1f, groundLayerMarsk))
+            Debug.DrawRay(rays[i].origin, rays[i].direction * 1f, Color.red);
+            if (Physics.Raycast(rays[i], 0.5f, groundLayerMarsk))
                 return true;
         }
         return false;

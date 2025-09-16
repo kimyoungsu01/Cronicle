@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     private void Awake() 
     {
-        CharacterManager.instance._player = this;
+        //CharacterManager.instance._player = this;
         Debug.Log(this);
         controller = GetComponent<PlayerController>();
     }
