@@ -5,17 +5,42 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private Rigidbody _rigidbody;
+    private Animator _animator;
+
     [Header("MoveMent")]
     public float moveSpeed;
-    public float jumpPower;
     private Vector2 moveInput;
     public float rotateSpeed = 10f; // 회전 속도
-    private Rigidbody _rigidbody;
+
+    [Header("Jump")]
+    public float jumpPower;
     public LayerMask groundLayerMarsk;
+
+    [Header("Run")]
+    public float runSpeed;
+
+    [Header("Slide")]
+    public bool isSliding;
+    public float slideSpeed;
+
+    [Header("Sit")]
+    public bool isSitting;
+    public float sitSpeed;
+
+    [Header("Climb")]
+    public bool climb;
+
+    [Header("Gun")]
+    public bool gunEquip;
+    public bool isAiming;
+    public bool isShooting;
+    private float shootTimer;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -54,14 +79,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //public void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag())
-    //    {
-    //        Debug.Log("플레이어 터치");
-    //    }
-    //}
-
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
@@ -83,6 +100,7 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             Debug.Log("점프 실행됨");
+            _animator.SetTrigger("Jump");
         }
         Debug.Log(IsGrounded());
     }
@@ -105,5 +123,22 @@ public class PlayerController : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift)) 
+            {
+                // 뛰는 속도 증가
+                Move();
+
+                // 뛰기 시작
+                _animator.SetTrigger("Run");
+            }
+        }
+        Debug.Log("달리기 실행됨");
+
     }
 }

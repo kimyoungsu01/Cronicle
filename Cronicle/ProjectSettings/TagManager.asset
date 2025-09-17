@@ -11,17 +11,17 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - 
+  - 
+  - Reflection_Probes
+  - Lighting
+  - Props
+  - ReflectedInWater
   - Ground
+  - AccessibleVolume
+  - PostProcessing
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - MainGround
   - 
   - 
   - 
