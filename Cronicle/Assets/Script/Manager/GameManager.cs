@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public CharacterManager characterManager;
+    public ObsculerManager obsculerManager;
+    public GunManager Gun;
     public static GameManager instance { get; set; }
 
     private void Awake()
@@ -18,8 +21,4 @@ public class GameManager : MonoBehaviour
           Destroy(gameObject);
         }
     }
-
-    public CharacterManager characterManager { get; set; }
-    public ObsculerManager obsculerManager { get; set; }
-    public ItemManager itemrManager { get; set; }
 }

@@ -33,6 +33,33 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "aa50d02d-b355-4d2c-b94e-68b37c8e3a40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sit",
+                    "type": "Button",
+                    "id": "85503d96-30e2-476c-b7a1-966fb2db9cc0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slider",
+                    "type": "Button",
+                    "id": "235a78cb-8b05-4846-8c22-234e69e836e5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Climb",
                     "type": "Button",
                     "id": "3a252409-7028-46bd-92d1-fe4466983201",
@@ -43,21 +70,12 @@
                 },
                 {
                     "name": "Gun",
-                    "type": "Value",
-                    "id": "4e77f5a1-e0df-438d-9d03-17a02a46dae5",
-                    "expectedControlType": "Delta",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Run",
                     "type": "Button",
-                    "id": "aa50d02d-b355-4d2c-b94e-68b37c8e3a40",
+                    "id": "4e77f5a1-e0df-438d-9d03-17a02a46dae5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -115,17 +133,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "ee474868-d09c-4e7a-8c11-ab8b880f084a",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "2D Vector",
@@ -196,11 +203,44 @@
                 {
                     "name": "",
                     "id": "85733900-a578-483e-80e6-64d9b6530135",
-                    "path": "<Mouse>/delta",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Gun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee474868-d09c-4e7a-8c11-ab8b880f084a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e35a9ede-10d4-48b6-803b-d7188909a371",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74eeebec-bc1d-42dc-b4ea-981c900a68e3",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slider",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

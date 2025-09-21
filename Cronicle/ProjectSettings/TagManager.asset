@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LadderUpStart
+  - LadderDownStart
+  - LadderDownEnd
+  - LadderUpEnd
+  - Obstacle
+  - Wall
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -20,7 +27,7 @@ TagManager:
   - Ground
   - AccessibleVolume
   - PostProcessing
-  - 
+  - obstacle
   - MainGround
   - 
   - 

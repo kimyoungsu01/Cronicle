@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: MoveObsculer
   m_EditorClassIdentifier: 
   obstacleName: "\uC6C0\uC9C1\uC774\uB294 \uD310"
-  damage: 100
-  obstaclePrefabs: {fileID: 5224111145423300409, guid: 5c4c91997c5d1034293c135f4e4978f2, type: 3}
+  obstaclePrefabs: {fileID: 5224111145423300409, guid: 5c4c91997c5d1034293c135f4e4978f2,
+    type: 3}
+  moveSpeed: 1
