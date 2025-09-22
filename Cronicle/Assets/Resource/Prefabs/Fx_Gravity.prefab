@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4028796901062309461}
   - component: {fileID: 8178793885076686428}
   - component: {fileID: 7889997613753468194}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: GravitySystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4900,7 +4900,7 @@ GameObject:
   - component: {fileID: 637189539599026264}
   - component: {fileID: 986211978175096191}
   - component: {fileID: 114274154309364851}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Fx_Gravity
   m_TagString: Untagged
   m_Icon: {fileID: 0}

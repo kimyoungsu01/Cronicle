@@ -19,7 +19,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - player
   - Reflection_Probes
   - Lighting
   - Props
@@ -29,7 +29,7 @@ TagManager:
   - PostProcessing
   - obstacle
   - MainGround
-  - 
+  - bullet
   - 
   - 
   - 
