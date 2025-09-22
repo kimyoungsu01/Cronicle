@@ -21,7 +21,7 @@ public class GravityGun : MonoBehaviour
     public void Shoot()
     {
         GameManager.instance.Gun.transform.position = firePoint.position;
-        //GameObject bullet = GunManager.instance.Get(0, firePoint.position, firePoint.rotation);
+        GameObject bullet = GunManager.instance.Get(0, firePoint.position, firePoint.rotation);
 
 
     }
