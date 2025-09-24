@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    MainBtn mainBtn = new MainBtn();
     private Rigidbody _rigidbody;
     private Animator _animator;
 
@@ -41,11 +42,6 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void FixedUpdate() 

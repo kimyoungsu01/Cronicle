@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-   public static CharacterManager instance { get; set; }
+    public Player _player { get; set; }
+    public PlayerController playerController { get; private set; }
+    public static CharacterManager instance { get; set; }
 
     private void Awake()
     {
@@ -18,7 +20,4 @@ public class CharacterManager : MonoBehaviour
           Destroy(gameObject);
         }
     }
-
-    public PlayerController playerController { get; private set; }
-    public Player _player { get; set; }
 }
