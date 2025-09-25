@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public CharacterManager characterManager;
     public ObsculerManager obsculerManager;
+    public SoundManager soundManager;
     public UIManager uiManager;
     public GunManager Gun;
     public static GameManager instance { get; set; }
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (uiManager.mainBtn)
+        if (uiManager.mainBtn.enabled == true)
         {
             Cursor.lockState = CursorLockMode.None;
         }

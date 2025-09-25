@@ -60,6 +60,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Candle",
+                    "type": "Button",
+                    "id": "119d8200-16b6-4b30-9ec9-8dc7273e22f7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "e483bd75-c0c0-4d4f-b4ee-77300e4507e6",
@@ -208,6 +217,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Gun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5612f3aa-87ff-47ad-bac6-7a361a4be24c",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Candle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -19,11 +19,4 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void Start()
-    {
-        mainBtn.Onstart();
-        mainBtn.OnOption();
-        mainBtn.OnExit();
-    }
 }

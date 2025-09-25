@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 46eb37548db6e3c438392cd7bf612419
+guid: ab6c5a17465699c4389631d775e18e77
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,22 +136,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lightobj
+      name: UIOption_screne
       rect:
         serializedVersion: 2
-        x: 874
-        y: 769
-        width: 205
-        height: 311
+        x: 813
+        y: 302
+        width: 296
+        height: 66
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 205, y: 311, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44a32cf19e1cc514e920db2ef904cbd7
-      internalID: -1115405916
+      spriteID: ea9642d5799495840b20f262e9362236
+      internalID: 1588854087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIOption_option
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 167
+        width: 101
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23bde9d94cd8bb42bba5b14390a5bc5
+      internalID: 1321990826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIOption_Rbutton
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 313
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33a58c77ace9c44c92e371bfb865066
+      internalID: 603276237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIOption_Lbutton
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 312
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: befa05e1303ea944893bf8fd4e9bbddf
+      internalID: 288999536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIOption_Apply
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 169
+        width: 232
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a81ad1c4c97de428b9aaa2b3f663b8
+      internalID: 1118258899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIOption_slider
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 562
+        width: 33
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8157f14eab1a894293e304b8fa4b7a9
+      internalID: -791700672
       vertices: []
       indices: 
       edges: []
@@ -159,7 +264,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a96dfbb0738db474ea8a2e4bc2c46104
+    spriteID: 37bed9504a494e34dbc3af1b4a649e8a
     internalID: 0
     vertices: []
     indices: 
@@ -167,7 +272,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lightobj: -1115405916
+      UIOption_Apply: 1118258899
+      UIOption_Lbutton: 288999536
+      UIOption_Rbutton: 603276237
+      UIOption_option: 1321990826
+      UIOption_screne: 1588854087
+      UIOption_slider: -791700672
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

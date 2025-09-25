@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 46eb37548db6e3c438392cd7bf612419
+guid: de052144077f2ae4586bd36d1ed60971
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,22 +136,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lightobj
+      name: UIOptionWindow
       rect:
         serializedVersion: 2
-        x: 874
-        y: 769
-        width: 205
-        height: 311
+        x: 642
+        y: 110
+        width: 634
+        height: 856
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 205, y: 311, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44a32cf19e1cc514e920db2ef904cbd7
-      internalID: -1115405916
+      spriteID: dfcdbf349f557ae4b8f09990506ca02f
+      internalID: 1121660202
       vertices: []
       indices: 
       edges: []
@@ -159,7 +159,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a96dfbb0738db474ea8a2e4bc2c46104
+    spriteID: 1ef0d9a666806814bb42c7f1c6d3c86c
     internalID: 0
     vertices: []
     indices: 
@@ -167,7 +167,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lightobj: -1115405916
+      UIOptionWindow: 1121660202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

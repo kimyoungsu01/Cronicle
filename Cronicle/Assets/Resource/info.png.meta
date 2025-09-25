@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 46eb37548db6e3c438392cd7bf612419
+guid: 9e04fef5e0cf1304788930e27445cefa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,22 +136,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lightobj
+      name: info
       rect:
         serializedVersion: 2
-        x: 874
-        y: 769
-        width: 205
-        height: 311
+        x: 806
+        y: 309
+        width: 304
+        height: 476
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 205, y: 311, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44a32cf19e1cc514e920db2ef904cbd7
-      internalID: -1115405916
+      spriteID: ea1cc410c8438d44daacf732d23ba31f
+      internalID: 2077909918
       vertices: []
       indices: 
       edges: []
@@ -159,7 +159,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a96dfbb0738db474ea8a2e4bc2c46104
+    spriteID: fdb428abcc542c14aab6aa034055486b
     internalID: 0
     vertices: []
     indices: 
@@ -167,7 +167,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lightobj: -1115405916
+      info: 2077909918
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
