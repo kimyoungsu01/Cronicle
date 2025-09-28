@@ -7,7 +7,7 @@ public class GravityGun : MonoBehaviour
 
     private void Awake()
     {
-        //firePoint = GetComponent<Transform>();
+        
     }
 
     private void Update()

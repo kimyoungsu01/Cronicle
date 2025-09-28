@@ -47,4 +47,19 @@ public class GunManager : MonoBehaviour
         }
         return select;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Animator _animation = GetComponent<Animator>();
+
+        if (_animation != null)
+        {
+            _animation.SetBool("IsGravityScale", true);
+        }
+
+        else
+        {
+            _animation.SetBool("IsGravityScale", false);
+        }
+    }
 }
