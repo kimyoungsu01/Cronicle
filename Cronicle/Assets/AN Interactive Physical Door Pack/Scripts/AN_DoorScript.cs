@@ -48,7 +48,6 @@ public class AN_DoorScript : MonoBehaviour
     {
         if ( !Remote && Input.GetKeyDown(KeyCode.E) && NearView() )
             Action();
-        
     }
 
     public void Action() // void to open/close door

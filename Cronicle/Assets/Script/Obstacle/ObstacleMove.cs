@@ -1,56 +1,28 @@
+癤퓎sing System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleMover : MonoBehaviour
+public class DoorController : MonoBehaviour
 {
-    public MoveObsculer obstacleData; // ScriptableObject 참조
-    private int direction;
+    [SerializeField]
+    public DoorData[] doorDatas;
 
-    private Rigidbody _rigidbody;
-
-    private void Awake()
+    private Dictionary<string, DoorData> doorData = new Dictionary<string, DoorData>();
+    
+    private void start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody = gameObject.AddComponent<Rigidbody>();
+        foreach (DoorData door in doorDatas) { doorData.Add(door.name,door); }
     }
 
-    private void Start()
+    public void Update()
     {
-        if (obstacleData == null)
-        {
-            Debug.LogError("Obstacle Data가 없습니다!");
-            return;
-        }
+        OnOpenDoor();
     }
 
-    private void FixedUpdate()
+    public void OnOpenDoor()
     {
-        if (obstacleData == null) return;
-
-        // 좌우 이동
-        _rigidbody.MovePosition(transform.position + Vector3.right * direction * obstacleData.moveSpeed * Time.fixedDeltaTime);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // 벽, 다른 장애물과 부딪히면 방향 반전
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Obstacle"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            direction *= -1;
-        }
-
-        // 플레이어가 발판에 올라섰을 때
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(transform); // 발판의 자식으로
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        // 발판에서 벗어나면 부모 해제
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(null);
+            //DoorOpen("3踰덉㎏臾�", true);
         }
     }
 }
