@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class GunManager : MonoBehaviour
 {
@@ -10,7 +8,7 @@ public class GunManager : MonoBehaviour
     // 총알 오브젝트 리스트
     List<GameObject>[] bulletList;
    
-    public static GunManager instance;
+    public static GunManager instance { get; set; }
 
     private void Awake()
     {
@@ -20,8 +18,14 @@ public class GunManager : MonoBehaviour
 
         for (int i = 0; i < prefabs.Length; i++)
         {
+            Debug.Log(prefabs[i]);
             bulletList[i] = new List<GameObject>();
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     internal GameObject Get(int i , Vector3 position, Quaternion rotation)
@@ -42,6 +46,7 @@ public class GunManager : MonoBehaviour
 
         if (!select) 
         { 
+            Debug.Log(position);
             select = Instantiate(prefabs[i],position,rotation);
             bulletList[i].Add(select);
         }

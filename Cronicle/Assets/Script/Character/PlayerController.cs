@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rigidbody;
     private Animator _animator;
 
-    [Header("MoveMent")]
+    [Header("Move")]
     public float moveSpeed;
     private Vector2 moveInput;
     public float rotateSpeed = 10f; // 회전 속도
@@ -30,12 +28,20 @@ public class PlayerController : MonoBehaviour
     [Header("Climb")]
     public bool climb;
 
+    [Header("Interact")]
+    [SerializeField] Puzzle puzzle;
+    public bool openDoor;
+    public bool closeDoor;
+
     [Header("Gun")]
+    [SerializeField] private GameObject gun;
     public bool gunEquip;
     public bool isAiming;
     public bool isShooting;
     public bool hasGun = false;
-    private float shootTimer;
+
+    [Header("Candle")]
+    [SerializeField] private GameObject candle;
 
 
     private void Awake()
@@ -118,8 +124,8 @@ public class PlayerController : MonoBehaviour
         {
           new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.3f),Vector3.down),
           new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.3f),Vector3.down),
-          new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.3f),Vector3.down),
-          new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.3f),Vector3.down),
+          new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.3f),Vector3.down),
+          new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.3f),Vector3.down),
         };
 
         for (int i = 0; i < rays.Length; i++)
@@ -175,22 +181,43 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnInteract(InputAction.CallbackContext context) 
+    {
+        if (context.phase == InputActionPhase.Performed) 
+        {
+            // 오브젝트 상호작용
+            Debug.Log(puzzle);
+        }
+    }
+
     public void OnGun(InputAction.CallbackContext context) 
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Started)
         {
-            hasGun = !hasGun;
+            hasGun = true;
+            gun.SetActive(true);
             _animator.SetBool("hasGun", hasGun);
-
-            // 중력건 포즈 시작
-            if (hasGun)
             _animator.SetBool("IsGun", true);
         }
+    }
 
-        else 
+    public void OnGunOption(InputAction.CallbackContext context) 
+    { 
+        if(context.phase == InputActionPhase.Started) 
         {
-            // 중력건 포즈 취소
-            _animator.SetBool("IsGun", false);
+            
+        }
+    }
+
+    public void OnCandle(InputAction.CallbackContext context) 
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            if(!candle.activeSelf)
+                candle.SetActive(true);
+
+            else
+                candle.SetActive(false);
         }
     }
 
