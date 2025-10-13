@@ -23,8 +23,8 @@ public class Puzzle : MonoBehaviour
         StartCoroutine(PuzzleSquence());
     }
 
-    IEnumerator PuzzleSquence() 
-    { 
+    IEnumerator PuzzleSquence()
+    {
         yield return StartCoroutine(RotationValue());
         yield return StartCoroutine(OpenDoor());
     }
@@ -40,7 +40,7 @@ public class Puzzle : MonoBehaviour
             float step = valveZSpeed * Time.deltaTime; // 델타 타임을 곱하여 프레임 독립적인 속도 조절
             puzzle[0].transform.Rotate(0, 0, step); // Z축으로 회전
             valveRotated += step; // 회전된 각도 누적
-            yield return null;
+            yield return null; 
         }
     }
 

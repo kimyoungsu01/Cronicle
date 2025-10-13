@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour
     MainBtn mainBtn = new MainBtn();
     private Rigidbody _rigidbody;
     private Animator _animator;
+    public CameraMover cameraMover;
 
     [Header("Move")]
     public float moveSpeed;
@@ -30,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Interact")]
     [SerializeField] Puzzle puzzle;
+    public float interactDistance = 3f; // 상호작용 거리
+    public LayerMask interactLayer;     // 퍼즐 레이어 지정 가능 (선택)
     public bool openDoor;
     public bool closeDoor;
 
@@ -39,6 +43,9 @@ public class PlayerController : MonoBehaviour
     public bool isAiming;
     public bool isShooting;
     public bool hasGun = false;
+
+    [Header("GravityOption")]
+    [SerializeField] private GameObject gravityOptionUI;
 
     [Header("Candle")]
     [SerializeField] private GameObject candle;
@@ -87,6 +94,7 @@ public class PlayerController : MonoBehaviour
             _rigidbody.velocity = velocity;
         }
     }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -181,12 +189,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnInteract(InputAction.CallbackContext context) 
+    public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed) 
+        if (context.phase == InputActionPhase.Performed)
         {
-            // 오브젝트 상호작용
-            Debug.Log(puzzle);
+            // 플레이어 시점에서 앞으로 Ray 발사
+            Ray ray = new Ray(transform.position, transform.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayer))
+            {
+                Puzzle puzzle = hit.collider.GetComponent<Puzzle>();
+                if (puzzle != null)
+                {
+                    Debug.Log("퍼즐과 상호작용!");
+                    // 퍼즐의 코루틴 실행
+                    //StartCoroutine(puzzle.RotationValue());
+                    //StartCoroutine(puzzle.OpenDoor());
+                }
+            }
+        }
+    }
+
+    public void OnGravityOption(InputAction.CallbackContext context) 
+    {
+        if (context.phase == InputActionPhase.Started) 
+        {
+            if (!gravityOptionUI.activeSelf)
+                gravityOptionUI.SetActive(true);
+            else
+                gravityOptionUI.SetActive(false);
         }
     }
 
@@ -196,16 +226,7 @@ public class PlayerController : MonoBehaviour
         {
             hasGun = true;
             gun.SetActive(true);
-            _animator.SetBool("hasGun", hasGun);
-            _animator.SetBool("IsGun", true);
-        }
-    }
-
-    public void OnGunOption(InputAction.CallbackContext context) 
-    { 
-        if(context.phase == InputActionPhase.Started) 
-        {
-            
+            _animator.SetTrigger("IsGunTrigger");
         }
     }
 
@@ -231,6 +252,14 @@ public class PlayerController : MonoBehaviour
             _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1f);
             _animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandGrip.position);
             _animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandGrip.rotation);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) 
+        {
+            cameraMover.NextStage();
         }
     }
 }
