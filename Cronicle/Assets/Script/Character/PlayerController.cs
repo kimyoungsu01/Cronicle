@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     public CameraMover cameraMover;
 
+    [Header("Start")]
+    UIManager uiManager;
+    public bool isStanding = false;
+
     [Header("Move")]
     public float moveSpeed;
     private Vector2 moveInput;
@@ -26,9 +30,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sit")]
     public float sitSpeed;
-
-    [Header("Climb")]
-    public bool climb;
 
     [Header("Interact")]
     [SerializeField] Puzzle puzzle;
@@ -95,9 +96,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnStandUp()
+    {
+        mainBtn.Onstart();
+        _animator.SetBool("IsStandUp", true);
+        isStanding = true;
+    }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!isStanding) return; // 서있지 않으면 움직이지 않음
+
         if (context.phase == InputActionPhase.Performed)
         {
             moveInput = context.ReadValue<Vector2>();
@@ -201,7 +211,7 @@ public class PlayerController : MonoBehaviour
                 if (puzzle != null)
                 {
                     Debug.Log("퍼즐과 상호작용!");
-                    // 퍼즐의 코루틴 실행
+                    //퍼즐의 코루틴 실행
                     //StartCoroutine(puzzle.RotationValue());
                     //StartCoroutine(puzzle.OpenDoor());
                 }
