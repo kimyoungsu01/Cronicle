@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rigidbody;
     private Animator _animator;
     public CameraMover cameraMover;
+    Vector3 velocity = Vector3.zero;
 
     [Header("Start")]
     UIManager uiManager;
@@ -60,7 +61,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        Move();
+        if (isStanding) 
+        {
+            Move(); //구상에 맞게 조립하는 연습
+        }
     }
 
     public void Move() 
@@ -98,15 +102,29 @@ public class PlayerController : MonoBehaviour
 
     public void OnStandUp()
     {
-        mainBtn.Onstart();
+        StartCoroutine(StandUpAfterDelay());
+        _animator.SetBool("Idle", true);
+    }
+
+    private IEnumerator StandUpAfterDelay() 
+    {
+        _animator.SetBool("IsRepose", true);
+        isStanding = false;
+
+        yield return new WaitForSeconds(3f); // 3초 대기
+
+        _animator.SetBool("IsRepose", false);
         _animator.SetBool("IsStandUp", true);
+
+        yield return new WaitForSeconds(6f);
+
+        _animator.SetBool("IsStandUp", false);
         isStanding = true;
     }
 
-
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!isStanding) return; // 서있지 않으면 움직이지 않음
+        //if (!isStanding) return; // 서있지 않으면 움직이지 않음
 
         if (context.phase == InputActionPhase.Performed)
         {

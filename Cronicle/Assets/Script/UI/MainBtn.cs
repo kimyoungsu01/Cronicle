@@ -10,11 +10,14 @@ public class MainBtn : MonoBehaviour
     public GameObject GravityOption;
     public DOTweenAnimation dotween;
 
+    [SerializeField] private PlayerController playerController;
+
     public void Onstart() 
     {
         Debug.Log(MainUI);
         MainUI.SetActive(false);
         gravityskill.SetActive(true);
+        playerController.OnStandUp();
     }
 
     public void OnOption() 
