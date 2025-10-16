@@ -7,8 +7,6 @@ public class MainBtn : MonoBehaviour
     public GameObject MainUI;
     public GameObject optionPanel;
     public GameObject gravityskill;
-    public GameObject GravityOption;
-    public DOTweenAnimation dotween;
 
     [SerializeField] private PlayerController playerController;
 
@@ -34,17 +32,5 @@ public class MainBtn : MonoBehaviour
     public void OnBack() 
     {
        optionPanel.SetActive(false);
-    }
-
-    public void OnLightMove() 
-    {
-        dotween.StartCoroutine(LightMove());
-    }
-
-    IEnumerator LightMove() 
-    {
-        //transform.DORotate(360,2f).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
-
-        yield return null;
     }
 }

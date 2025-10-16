@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rigidbody;
     private Animator _animator;
     public CameraMover cameraMover;
-    Vector3 velocity = Vector3.zero;
 
     [Header("Start")]
     UIManager uiManager;
@@ -33,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public float sitSpeed;
 
     [Header("Interact")]
-    [SerializeField] Puzzle puzzle;
+    [SerializeField] PuzzleManager puzzle;
     public float interactDistance = 3f; // 상호작용 거리
     public LayerMask interactLayer;     // 퍼즐 레이어 지정 가능 (선택)
     public bool openDoor;
@@ -61,10 +60,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        if (isStanding) 
+        if (isStanding)
         {
             Move(); //구상에 맞게 조립하는 연습
         }
+
     }
 
     public void Move() 
@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
                 velocity.y = _rigidbody.velocity.y; // 중력 유지
                 _rigidbody.velocity = velocity;
             }
+            Debug.Log(_rigidbody.velocity);
         }
         else
         {
@@ -225,7 +226,7 @@ public class PlayerController : MonoBehaviour
             Ray ray = new Ray(transform.position, transform.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayer))
             {
-                Puzzle puzzle = hit.collider.GetComponent<Puzzle>();
+                PuzzleManager puzzle = hit.collider.GetComponent<PuzzleManager>();
                 if (puzzle != null)
                 {
                     Debug.Log("퍼즐과 상호작용!");
