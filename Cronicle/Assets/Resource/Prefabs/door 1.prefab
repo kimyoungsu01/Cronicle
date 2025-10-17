@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 2546139654149952265}
   - component: {fileID: 6005245733144237683}
   - component: {fileID: 6233378182835819820}
+  - component: {fileID: 6863922856116673018}
   m_Layer: 0
   m_Name: door 1
   m_TagString: Untagged
@@ -110,14 +111,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5271602353035412310}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00000008186907, y: 0.00000016391276, z: 0.0043418906, w: 0.9999906}
+  m_LocalRotation: {x: 0, y: 0, z: 0.00434586, w: 0.9999906}
   m_LocalPosition: {x: -1227.6818, y: 45.70842, z: -1052.194}
-  m_LocalScale: {x: 0.14118607, y: 1.2996931, z: 2.1335678}
+  m_LocalScale: {x: 0.08916634, y: 0.8208243, z: 1.347459}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7136194706945397310}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -170, z: 0.498}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.498}
 --- !u!65 &2546139654149952265
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5271602353035412310}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -161,10 +162,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!59 &6233378182835819820
 HingeJoint:
@@ -175,17 +176,17 @@ HingeJoint:
   m_GameObject: {fileID: 5271602353035412310}
   m_ConnectedBody: {fileID: 0}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Anchor: {x: 0, y: 0.08, z: 0.02}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -66.10181, y: 24.168865, z: -7.8320312}
+  m_ConnectedAnchor: {x: -65.91347, y: 24.274479, z: -4.4740624}
   serializedVersion: 2
   m_UseSpring: 1
   m_Spring:
     spring: 1
     damper: 1
     targetPosition: 0
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
     targetVelocity: 0
     force: 0
@@ -195,7 +196,7 @@ HingeJoint:
   m_UseAcceleration: 0
   m_Limits:
     min: 0
-    max: 0
+    max: 90
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -205,3 +206,17 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &6863922856116673018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271602353035412310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19f7ffca4e0fc41a5280f3f1b28226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openSpeed: 100
+  motorForce: 500

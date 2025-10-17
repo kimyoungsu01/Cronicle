@@ -4,43 +4,43 @@
 public class DoorController : MonoBehaviour
 {
     private HingeJoint hinge;
-    private JointSpring doorSpring;
+    private bool isOpen = false;
 
-    [Header("Door Open Settings")]
-    public float openAngle = 90f;     // 문이 열릴 각도
-    public float springForce = 50f;   // 문을 닫히게 하는 힘 (느슨하게 유지 가능)
-    public float openSpeed = 10f;     // 문 열리는 속도
-    public bool isOpen = false;
+    public float openSpeed = 90f;
+    public float motorForce = 500f;
 
-    private void Start()
+    void Start()
     {
         hinge = GetComponent<HingeJoint>();
-        doorSpring = hinge.spring;
-        doorSpring.spring = springForce;
-        doorSpring.damper = 5f;
-        hinge.useSpring = true;
+        hinge.useLimits = true;
+        hinge.useMotor = true;
+
+        JointMotor motor = hinge.motor;
+        motor.force = motorForce;
+        motor.freeSpin = false;
+        motor.targetVelocity = 0f;
+        hinge.motor = motor;
     }
 
     public void OpenDoor()
     {
         if (isOpen) return;
-
         isOpen = true;
-        Debug.Log($"{name} 문 열림");
 
-        // 목표 각도 설정
-        doorSpring.targetPosition = -openAngle;  // 힌지 축 방향에 따라 + 또는 - 변경 필요
-        hinge.spring = doorSpring;
+        JointMotor motor = hinge.motor;
+        motor.force = motorForce;
+        motor.targetVelocity = Mathf.Abs(openSpeed); // Z축 양수 방향으로 열림
+        hinge.motor = motor;
     }
 
     public void CloseDoor()
     {
         if (!isOpen) return;
-
         isOpen = false;
-        Debug.Log($"{name} 문 닫힘");
 
-        doorSpring.targetPosition = 0f;
-        hinge.spring = doorSpring;
+        JointMotor motor = hinge.motor;
+        motor.force = motorForce;
+        motor.targetVelocity = -Mathf.Abs(openSpeed); // Z축 음수 방향으로 닫힘
+        hinge.motor = motor;
     }
 }
