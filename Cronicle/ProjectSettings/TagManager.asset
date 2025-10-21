@@ -12,6 +12,7 @@ TagManager:
   - Wall
   - Gun
   - valve
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -31,8 +32,8 @@ TagManager:
   - obstacle
   - MainGround
   - bullet
-  - 
-  - 
+  - NPC
+  - Ladder
   - 
   - 
   - 

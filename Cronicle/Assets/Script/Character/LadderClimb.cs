@@ -2,77 +2,85 @@ using UnityEngine;
 
 public class LadderClimb : MonoBehaviour
 {
-    [Header("Climb")]
-    public bool isClimbing = false;
-    public bool isEnterLadder = false;
-    public bool isNearLadder = false;
+    [Header("Climb Settings")]
+    public float climbSpeed = 3f;     // 오르내리는 속도
+    public bool isClimbing = false;   // 사다리 타는 중인지
+    public bool isNearLadder = false; // 사다리 근처인지
 
-    bool isUpLadder = false;
-    bool isDownLadder = false;
-
-    Vector3 ladderPosition;
-    Vector3 ladderRotation;
-
-    Animator animator;
-
-    CharacterController characterController;
+    private Rigidbody rb;
+    private Vector3 ladderForward;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
-        TryGetComponent(out animator);
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = true;
     }
 
-    public void CharacterToLadder() 
+    void Update()
     {
-        Vector3 targetPosition = new Vector3(ladderPosition.x, transform.position.y,ladderPosition.z);
-        Vector3 dir = (targetPosition - transform.position).normalized;
-        float distanceToLadder = Vector3.Distance(transform.position, targetPosition);
-        characterController.Move(dir * distanceToLadder);
+        // E 키로 사다리 타기 시작
+        if (isNearLadder && Input.GetKeyDown(KeyCode.E))
+        {
+            StartClimb();
+        }
 
-        //LookAtLadder();
-        //LadderStart();
+        // 스페이스바로 사다리 타기 종료
+        if (isClimbing && Input.GetKeyDown(KeyCode.Space))
+        {
+            StopClimb();
+        }
+
+        if (isClimbing)
+        {
+            ClimbMovement();
+        }
+    }
+
+    private void StartClimb()
+    {
+        isClimbing = true;
+        rb.useGravity = false;
+        rb.velocity = Vector3.zero;
+        Debug.Log("사다리 타기 시작");
+    }
+
+    private void StopClimb()
+    {
+        isClimbing = false;
+        rb.useGravity = true;
+        Debug.Log("사다리 타기 종료");
+    }
+
+    private void ClimbMovement()
+    {
+        float vertical = Input.GetAxis("Vertical"); // W/S 키 입력
+        Vector3 move = Vector3.up * vertical * climbSpeed;
+
+        rb.velocity = move;
+
+        // 사다리 바라보는 방향으로 회전 (정렬)
+        if (ladderForward != Vector3.zero)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(-ladderForward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 10f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("LadderDownStart"))
+        if (other.CompareTag("Ladder"))
         {
-            //NearLadderPodition(other);
-
-            isUpLadder = true;
-            isDownLadder = false;
-        }
-
-        else if (other.CompareTag("LadderDownEnd")) 
-        {
-            //EndOfLadder("LadderDownEnd");
-        }
-
-        else if (other.CompareTag("LadderUpStart")) 
-        {
-            //NearLadderPodition(other);
-
-            isUpLadder = true;
-            isDownLadder = false;
-        }
-
-        else if (other.CompareTag("LadderUpEnd"))
-        {
-            //EndOfLadder("LadderUpEnd");
+            isNearLadder = true;
+            ladderForward = other.transform.forward;
         }
     }
 
-    private void NearLadderPosition(Collider other) 
-    { 
-        isNearLadder = true;
-
-        ladderPosition = other.gameObject.transform.position;
-        ladderRotation = other.gameObject.transform.forward;
-    }
-
-    private void EndOfLadder() 
-    { 
-    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isNearLadder = false;
+            StopClimb();
+        }
     }
 }

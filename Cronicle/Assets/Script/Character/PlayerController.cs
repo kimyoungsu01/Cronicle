@@ -89,7 +89,6 @@ public class PlayerController : MonoBehaviour
                 velocity.y = _rigidbody.velocity.y; // 중력 유지
                 _rigidbody.velocity = velocity;
             }
-            Debug.Log(_rigidbody.velocity);
         }
         else
         {
@@ -281,14 +280,6 @@ public class PlayerController : MonoBehaviour
             _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1f);
             _animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandGrip.position);
             _animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandGrip.rotation);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) 
-        {
-            cameraMover.NextStage();
         }
     }
 }
