@@ -53,6 +53,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject candle;
 
 
+    [Header("사운드")]
+    public AudioClip walkClip;
+    public AudioClip jumpClip;
+    public AudioClip runClip;
+
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -68,6 +74,7 @@ public class PlayerController : MonoBehaviour
             Move(); //구상에 맞게 조립하는 연습
         }
     }
+
 
     public void Move() 
     {
@@ -151,8 +158,10 @@ public class PlayerController : MonoBehaviour
             _rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             Debug.Log("점프 실행됨");
             _animator.SetTrigger("IsJump");
+            SoundManager.Instance.PlaySFXLoop(SoundManager.Instance.jump);
         }
         Debug.Log(IsGrounded());
+        SoundManager.Instance.StopSFXLoop();
     }
 
 
@@ -183,11 +192,20 @@ public class PlayerController : MonoBehaviour
             // 뛰기 시작
             _animator.SetBool("IsRunning", true);
             Debug.Log("달리기 실행됨");
+
+            // 뛰기 시작하면 걷기 소리 중지
+            SoundManager.Instance.StopSFXLoop();
+
+            // 그리고 뛰는 소리 재생
+            SoundManager.Instance.PlaySFXLoop(SoundManager.Instance.run);
         }
-        else
+
+        else if (context.phase == InputActionPhase.Canceled)
         {     // 뛰기 멈춤
             _animator.SetBool("IsRunning", false);
             Debug.Log("달리기 실행안됨");
+            // 뛰기 멈추면 뛰는 소리 끄고 걷기 소리 복귀
+            SoundManager.Instance.StopSFXLoop();
         }
     }
 

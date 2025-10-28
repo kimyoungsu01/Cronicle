@@ -31,6 +31,7 @@ public class DoorController : MonoBehaviour
         motor.force = motorForce;
         motor.targetVelocity = Mathf.Abs(openSpeed); // Z축 양수 방향으로 열림
         hinge.motor = motor;
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.smalldoor);
     }
 
     public void CloseDoor()
@@ -42,5 +43,6 @@ public class DoorController : MonoBehaviour
         motor.force = motorForce;
         motor.targetVelocity = -Mathf.Abs(openSpeed); // Z축 음수 방향으로 닫힘
         hinge.motor = motor;
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.smalldoor);
     }
 }
