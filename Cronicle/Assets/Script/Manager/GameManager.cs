@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public GunManager Gun;
     public static GameManager instance { get; set; }
+    public object cameraZoomController { get; private set; }
 
     private void Awake()
     {
@@ -36,4 +37,11 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    // ¿¹: StageManager.cs
+    //void OnStageChanged(int stageIndex)
+    //{
+    //    cameraZoomController.SetStage(stageIndex);
+    //}
+
 }

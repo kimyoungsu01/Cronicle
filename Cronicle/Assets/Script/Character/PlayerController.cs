@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -58,13 +59,14 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+ 
+
     private void FixedUpdate() 
     {
         if (isStanding)
         {
             Move(); //구상에 맞게 조립하는 연습
         }
-
     }
 
     public void Move() 

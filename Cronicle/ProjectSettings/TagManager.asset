@@ -13,6 +13,8 @@ TagManager:
   - Gun
   - valve
   - Ladder
+  - DeathZone
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
